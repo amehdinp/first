@@ -1,3 +1,11 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+def singup(request):
+    return HttpResponse("signupppp")
+
+def singin(request):
+    return HttpResponse("sigin")
+
+def singout(request):
+    return HttpResponse("signout")
