@@ -5,7 +5,15 @@
     <title>mikhorish</title>
   </head>
   <body>
-<title>naaaaaaaaaaaaaaaaaaaaa</title>
-<p>miiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</p>
+    <div class="create-article">
+      <h1>
+        create your article!
+      </h1>
+      <form class="site-form" action="{% url 'articles:creat' %}" method="post" enctype="multipart/form-data">
+        {{form}}
+        {% csrf_token %}
+        <input type="submit" name="" value="create">
+      </form>
+    </div>
   </body>
 </html>
