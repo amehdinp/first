@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse,redirect
 from django.http import HttpResponse
 from . import models,forms
 
@@ -13,18 +13,19 @@ def articles_list(request):
 
 def creat_article(request):
     if request.method=='POST':
-        form=forms.CreatArticle(request.POST,request.FILS)
+        form=forms.CreatArticle(request.POST,request.FILES)
         if form.is_valid():
             instance = form.save(commit = False)
             instance.author = request.user
             instance.save()
-            redirect ('articles:list')
+        return redirect('articles:list')
+
     else :
         form=forms.CreatArticle()
     return render (request,'articles/creat_article.html',{'form':form})
 
 
-    return render(request,'articles/creat_article.html')
+#    return render(request,'articles/creat_article.html')
 
 
 def details(request,slug):

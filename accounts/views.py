@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout
+from django.http import HttpResponse
 
 def signup(request):
     if request.method == 'POST':
@@ -27,4 +28,8 @@ def signin(request):
 
 
 def signout(request):
-    return HttpResponse("signout")
+    if request.method == 'POST':
+        logout(request)
+        return redirect('articles:list')
+    else :
+        return render (request ,'accounts/signout.html')
